@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/qml">
+        <file>main.qml</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>img/face-smile.png</file>
+        <file>img/moon.png</file>
+        <file>img/shadow.png</file>
+        <file>img/star.png</file>
+        <file>img/sun.png</file>
+    </qresource>
+</RCC>
