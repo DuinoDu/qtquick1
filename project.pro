@@ -1,7 +1,7 @@
 TEMPLATE = app
 TARGET = startup
 
-QT += declarative
+QT += core gui declarative
 
 # Additional import path used to resolve QML modules in Creator's code model
 QML_IMPORT_PATH =

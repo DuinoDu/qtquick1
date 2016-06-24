@@ -1,6 +1,8 @@
 <RCC>
     <qresource prefix="/qml">
         <file>main.qml</file>
+        <file>Nav.qml</file>
+        <file>NavItem.qml</file>
     </qresource>
     <qresource prefix="/">
         <file>img/face-smile.png</file>
@@ -8,5 +10,6 @@
         <file>img/shadow.png</file>
         <file>img/star.png</file>
         <file>img/sun.png</file>
+        <file>img/icon.png</file>
     </qresource>
 </RCC>

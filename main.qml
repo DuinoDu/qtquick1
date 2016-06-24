@@ -43,76 +43,21 @@ import MyWidgets 1.0
 import Backend 1.0
 
 
-Item {
-    id: window
-    width: 320; height: 480
+Rectangle {
+    id: root
+    width: ScreenWidth; height: ScreenHeight
+    //width: 1366; height: 768
+    color: "lightblue"
 
-    // Let's draw the sky...
-    Rectangle {
-        anchors { left: parent.left; top: parent.top; right: parent.right; bottom: parent.verticalCenter }
-        gradient: Gradient {
-            GradientStop { position: 0.0; color: "DeepSkyBlue" }
-            GradientStop { position: 1.0; color: "LightSkyBlue" }
-        }
-        MyPushButton{
-            text: "Duino";
-            onClicked: console.log("clicked")
-        }
-    }
-
-    // ...and the ground.
-    Rectangle {
-        anchors { left: parent.left; top: parent.verticalCenter; right: parent.right; bottom: parent.bottom }
-        gradient: Gradient {
-            GradientStop { position: 0.0; color: "ForestGreen" }
-            GradientStop { position: 1.0; color: "DarkGreen" }
-        }
-    }
-
-    // The shadow for the smiley face
-    Image {
+    Nav{
+        id: nav
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 20
+        width: root.width - 400
         anchors.horizontalCenter: parent.horizontalCenter
-        y: smiley.minHeight + 58
-        source: ":/img/shadow.png"
-
-        // The scale property depends on the y position of the smiley face.
-        scale: smiley.y * 0.5 / (smiley.minHeight - smiley.maxHeight)
+        ifHideBtn: true
     }
 
-    Image {
-        id: smiley
-        property int maxHeight: window.height / 3
-        property int minHeight: 2 * window.height / 3
-
-        anchors.horizontalCenter: parent.horizontalCenter
-        y: minHeight
-        source: ":/img/face-smile.png"
-
-        // Animate the y property. Setting loops to Animation.Infinite makes the
-        // animation repeat indefinitely, otherwise it would only run once.
-        SequentialAnimation on y {
-            loops: Animation.Infinite
-
-            // Move from minHeight to maxHeight in 300ms, using the OutExpo easing function
-            NumberAnimation {
-                from: smiley.minHeight; to: smiley.maxHeight
-                easing.type: Easing.OutExpo; duration: 300
-            }
-
-            // Then move back to minHeight in 1 second, using the OutBounce easing function
-            NumberAnimation {
-                from: smiley.maxHeight; to: smiley.minHeight
-                easing.type: Easing.OutBounce; duration: 1000
-            }
-
-            // Then pause for 500ms
-            PauseAnimation { duration: 500 }
-        }
-    }
-
-    Backend{
-        id: backend
-    }
-
+    Backend{ id: backend }
     Component.onCompleted: console.log(backend.helloCpp())
 }
